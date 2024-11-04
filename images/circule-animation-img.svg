@@ -1,0 +1,32 @@
+<svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<path id="motionPath" fill="none" stroke="#504F4F" stroke-miterlimit="20" d="
+		M 174, 174
+		m -20, 65
+		a 87,87 0 0,0 174,0
+		a 87,87 0 0,0 -174,0
+		"/>
+	<path id="motionPath2" fill="none" stroke="#504F4F" stroke-miterlimit="20" d="
+		M 244, 244
+		m -126, -6
+		a 122,122 0 1,0 244,0
+		a 122,122 0 1,0 -244,0
+		"/>  
+		
+	<path fill="none" stroke="#504F4F" stroke-miterlimit="20" d="
+		M 440, 440
+		m -420, -200
+		a 220,220 0 1,0 440,0
+		a 220,220 0 1,0 -440,0
+		"/>
+
+	<circle cx="" cy="" r="8" fill="#504F4F">
+		<animateMotion dur="2.8s" repeatCount="indefinite">
+		<mpath xlink:href="#motionPath"></mpath>
+		</animateMotion>
+	</circle>
+	<circle cx="" cy="" r="8" fill="#504F4F">
+		<animateMotion dur="3s" repeatCount="indefinite">
+		<mpath xlink:href="#motionPath2"></mpath>
+		</animateMotion>
+	</circle>
+</svg>

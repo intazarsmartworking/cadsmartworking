@@ -11,9 +11,9 @@
 				<h2 class="text-[35px] sm:text-[40px] lg:text-[56px] 3xl:text-[58px] font-medium text-white text-center px-0  md:leading-tight"><?php echo get_sub_field('main_heading'); ?></h2>
 			</div>
 		<?php endif; ?>
-		<div class="w-full flex relative min-h-[520px] md:min-h-[620px] pr-3 lg:pr-0 pt-5 lg:pt-16 pb-2 md:pb-16 overflow-hidden">
+		<div class="w-full flex relative min-h-[530px] lg:min-h-[530px] pr-3 lg:pr-0 pt-0 pb-2 overflow-hidden">
 		<div class="flex w-0 lg:w-1/12">&nbsp;</div>
-		<div class="slider-wrapper w-full min-h-[400px] lg:min-h-[500px] pt-[30px] relative card-container overflow-visible">
+		<div class="slider-wrapper w-full min-h-[400px] lg:min-h-[450px] pt-[30px] relative card-container overflow-visible">
 			<div class="slider-overlay">
 
 			

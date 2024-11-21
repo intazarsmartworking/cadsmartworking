@@ -23,10 +23,10 @@
             <div class="item-animtion"></div>
             <div class="item-animtion"></div>
             
-            <div class="grid grid-cols-1 md:grid-cols-11 gap-4 assemble-section-bg rounded-3xl relative px-0">
+            <div class="grid grid-cols-1 lg:grid-cols-11 gap-4 assemble-section-bg rounded-3xl relative px-0">
                     
                 
-                <div class="bg-white col-span-6 relative p-3 lg:p-[2.5rem] px-5 rounded-xl hide-mobile">
+                <div class="bg-white col-span-11 lg:col-span-6 relative p-3 lg:p-[2.5rem] px-5 rounded-xl hide-mobile">
                     <div class=" text-center w-[40px] h-[40px] rounded-[50%] border-[3px] border-[#fff] bg-[#FF4D02] absolute pt-[4px] right-[-27px] top-[40px] ">
                         <svg class=" inline-block" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M13.4998 18.0764C13.2438 18.0764 12.9878 17.9785 12.7928 17.7835C12.4018 17.3935 12.4018 16.7604 12.7928 16.3694L17.0858 12.0754L12.7928 7.78147C12.4018 7.39047 12.4018 6.75747 12.7928 6.36747C13.1838 5.97647 13.8158 5.97647 14.2068 6.36747L19.2068 11.3685C19.5978 11.7594 19.5978 12.3915 19.2068 12.7825L14.2068 17.7835C14.0118 17.9785 13.7558 18.0764 13.4998 18.0764Z" fill="white"/>
@@ -59,11 +59,11 @@
                                 $modified_permalink = rtrim($permalink, '/') . '-developer/';
                             ?>
 
-                            <div class="flex flex-col items-center justify-center py-2 px-2 rounded-lg skill-border cursor-pointer" onclick="toggleSkill(this)">
-                                <img src="<?php echo esc_url($hire_image_src[0]) ;?>" class="pb-4">
-                                <h6 class="text-xs font-normal text-dark-black"> <?php the_title();?> </h6>
+                            <div class="home-skills flex flex-col items-center justify-center p-3 rounded-lg skill-border cursor-pointer" onclick="toggleSkill(this)">
+                                <img src="<?php echo esc_url($hire_image_src[0]) ;?>" class="w-[40px] h-[40px]" />
+                                <h6 class="text-xs font-normal text-dark-black mt-4"> <?php the_title();?> </h6>
                                 <svg class="hidden w-4 h-4 mt-1 text-red-600 fill-current cursor-pointer cross-icon-position" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onclick="deselectSkill(event)">
-                                <path fill-rule="evenodd" d="M15.293 4.293a1 1 0 00-1.414 0L10 8.586 6.707 5.293a1 1 0 00-1.414 1.414L8.586 10l-3.293 3.293a1 1 0 001.414 1.414L10 11.414l3.293 3.293a1 1 0 001.414-1.414L11.414 10l3.293-3.293a1 1 0 000-1.414z" clip-rule="evenodd" />
+                                    <path fill-rule="evenodd" d="M15.293 4.293a1 1 0 00-1.414 0L10 8.586 6.707 5.293a1 1 0 00-1.414 1.414L8.586 10l-3.293 3.293a1 1 0 001.414 1.414L10 11.414l3.293 3.293a1 1 0 001.414-1.414L11.414 10l3.293-3.293a1 1 0 000-1.414z" clip-rule="evenodd" />
                                 </svg>
                             </div>
 
@@ -75,17 +75,33 @@
                     </div>
 
                 </div>
-                <div class="bg-white col-span-5 p-3 px-5 lg:p-[2.5rem] rounded-xl">
+                <div class="bg-white col-span-11 lg:col-span-5 p-3 px-5 lg:p-[2.5rem] rounded-xl">
                     <!-- <img src="<?php echo get_template_directory_uri();?>/images/smartworking-black.svg" class="mx-auto"> -->
 
                      <div class="rounded-2xl p-3 lg:px-[2.5rem] border-pattern ">
                         <h6 class="text-dark-orange font-bold text-2xl"> Share your requirements </h6>
 
-                        
+                        <!--<form method="post">
+
+                        <input type="text" id="skillsInput"  name="skills"  readonly
+                        class="mt-4 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-dark-black focus:border-dark-black  sm:text-sm">
+
+                            <input type="text"  name="fullname" placeholder="Full Name" 
+                            class="mt-4 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-dark-black focus:border-dark-black  sm:text-sm">
+
+
+                            <input type="email"  name="email-address" placeholder="Email Address" 
+                            class="mt-4 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-dark-black focus:border-dark-black  sm:text-sm">
+                            
+                            <button type="submit" class="w-full bg-dark-orange text-white mt-4 py-2 px-4 rounded-md hover:bg-dark-black focus:outline-none focus:bg-dark-black transition duration-200">Submit Now</button>
+                        </form>-->
 
                         <?php echo do_shortcode('[contact-form-7 id="713a21a" title="Assemble Team Form"]'); ?>
                 </div>
-                    
+                    <!-- <div class="rounded-2xl border-pattern ">
+                        <iframe class="home-form" aria-label='Share Your Requirement' frameborder="0" style="height:330px;width:100%;border:none;" src='https://forms.zohopublic.in/shubhankit/form/SkillPagesForm/formperma/Kg0mSBrC00V3ydnzP2AdZWY3HYv-yjP5y0vJV2CTa3E'></iframe>
+                        <h4 class="text-center text-dark-black text-sm font-semibold pt-3"> Our recruitment specialist will be in touch soon! </h4>
+                    </div>  -->
                     
                     
                     <div class="rounded-2xl px-6 pt-6 pb-3  lg:px-[2.5rem] border-pattern mt-4 hide-mobile">
@@ -95,7 +111,7 @@
                             </div>
                             <div>
                                 <p class="text-xs font-normal text-dark-black pb-3"> Adam Burrage </p>
-                                <p class="text-base text-dark-black"> Smart CAD found us an excellent engineer very quickly who has been one of our best engineers since she began. We see her as a core member of the team and can see her being with us for the long term. It has worked really well. </p>
+                                <p class="text-base text-dark-black"> Smart Working found us an excellent developer very quickly who has been one of our best developers since she began. We see her as a core member of the team and can see her being with us for the long term. It has worked really well. </p>
                                 </div>
                             </div>
                         </div>

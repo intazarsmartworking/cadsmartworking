@@ -129,7 +129,7 @@
 	<?php if (have_rows('block')) : ?>
 	<?php while (have_rows('block')) : the_row(); ?>
 	<?php if (get_row_layout() == 'curious_section') : ?>
-	<section class="calculator-box w-[100%] py-16">
+		<section class="calculator-box w-[100%] py-16">
 	<div class="inner-box grid grid-cols-1 lg:grid-cols-10 content-center rounded-[60px] max-w-[90%] min-h-[350px] mx-auto px-4 md:px-[10%]">
 		<div class="grid-item col-span-5 py-[10%] lg:py-[100px] content-center">
 			<div class="block mb-5">
@@ -148,43 +148,17 @@
 			</p>
 			<?php endif; ?>
 		</div>
-		<div class="grid-item col-span-5 relative py-[10%] lg:py-[100px]">
-			<div class="max-w-md relative z-10 rounded-3xl min-h-[300px] bg-white overflow-hidden shadow-lg mx-auto">
-				<div class="px-6 py-4">
-				<?php if(get_sub_field('hourly_rate_title')): ?>
-				<div class="block">
-					<p class="text-[24px] text-[#64748b]"><?php echo get_sub_field('hourly_rate_title'); ?></p>
-				</div>
-				<?php endif; ?>
-				<?php if(get_sub_field('amount')): ?> 
-				<div class="block">
-					<p class="text-[54px] font-[500] "><?php echo get_sub_field('amount'); ?></p>
-				</div>
-				<?php endif; ?>	
-				<div class="block w-100 mt-3 h-[110px] border-b border-gray-400">
-					<div class="sliderwrap">
-						<input class="home-range-slider" id="range" type="range" max="100" value="60">
-					</div>
-				</div>
-				<div class="block pt-5">
-					<div class="flex">
-						<?php if(get_sub_field('amount_save_title')): ?>
-						<div class="grow">
-							<span class="text-[18px] font-[400] text-gray-500 "><?php echo get_sub_field('amount_save_title'); ?></span>
-						</div>
-						<?php endif; ?>	
-						<div class="grow text-end">
-							<span id="price-value" class="text-[24px] font-[500] text-black">£ </span>
-						</div>
-					</div>
-				</div>
+		<div class="grid-item col-span-5 content-end relative py-[10%] lg:py-[100px]">
+			<div class=" w-[100%] max-w-[450px] min-h-[400px] bg-[#ff4d04] p-[15px] md:p-[30px] pb-[120px] rounded-[16px] lg:rounded-[40px] relative overflow-hidden ml-auto">
+				<p class="text-[25px] lg:text-[30px] font-semibold text-[#fff]"> <?php echo get_sub_field('hourly_rate_title'); ?></p>
+				<p class="text-[35px] lg:text-[50px] font-bold text-[#fff]"><?php echo get_sub_field('amount'); ?></p>
+				<p class="text-[35px] lg:text-[50px] font-bold text-[#fff] leading-[40px]"><span class="text-[20px] inline-block align-bottom leading-[25px]">to </span> <?php echo get_sub_field('amount_save_title'); ?>  <span class="text-[20px] inline-block align-bottom leading-[25px]"> <?php echo get_sub_field('amount_duration'); ?> </span></p>
+				<p class="text-[18px] lg:text-[20px] text-[#fff] mt-[20px]"><?php echo get_sub_field('equivalent_text'); ?></p>
+				<div class="w-[100%] absolute h-[110px] bg-[rgba(255,255,255,0.4)] left-0 bottom-0 p-[20px] md:px-[30px]">
+					<p class="text-[18px] lg:text-[20px] text-[#fff]"><?php echo get_sub_field('save_text'); ?></p>
+					<!-- <p class="text-[13px] text-[#fff]"><?php echo get_sub_field('expense_include'); ?></p> -->
 				</div>
 			</div>
-			<?php $curious_img = get_sub_field('main_image');
-				if (!empty($curious_img) && isset($curious_img['url'])):
-				?>
-			<img class="calculater-bg absolute left-0 bottom-0 w-[100%] z-[0]" src="<?php echo esc_url($curious_img['url']); ?>">
-			<?php endif; ?>
 		</div>
 	</div>
 	</section>

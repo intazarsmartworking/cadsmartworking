@@ -8,7 +8,7 @@
 	<?php endif; ?> 
 	  
 	<?php if(get_sub_field('main_heading')): ?>	  
-	  <h2 class=" text-[35px] sm:text-[40px] lg:text-[56px] 3xl:text-58 font-medium text-white text-center px-0 md:px-96 md:leading-tight"><?php echo get_sub_field('main_heading'); ?></h2>
+	  <h2 class=" text-[35px] sm:text-[40px] lg:text-[56px] 3xl:text-58 font-medium text-white text-center px-0 lg:px-96 md:leading-tight"><?php echo get_sub_field('main_heading'); ?></h2>
 	<?php endif; ?> 
 
 	<?php if(get_sub_field('subheading')): ?>	
@@ -18,11 +18,11 @@
 	<?php endif; ?>
 	<?php endwhile; ?>
 	<?php endif; ?>  
-	  <div class="grid md:flex mt-[40px]">
-		<div class="md:w-[25%] px-6">
+	  <div class="grid grid-cols-12 lg:grid-cols-12 gap-4 mt-[40px]">
+		<div class="col-span-12 lg:col-span-4 px-6">
 			<?php display_ai_vetted_profile_categories();?>
 		</div>
-		<div class="md:w-[75%] p-3 border rounded-lg border-[#a962444d]">
+		<div class="col-span-12 lg:col-span-8 border rounded-lg border-[#a962444d]">
 			<div class="slide-show grid grid-cols-1 max-w-[100%]" >
 						<div class="dev-section">
 						<!-- Posts will be loaded here via AJAX -->	

@@ -111,11 +111,16 @@ dataLayer.push({
 			?>
               <ul class="mega-menu-left">
 			  <?php 
+			  	$counter = 0;
 				if ($menu_data) : 
-				foreach ($menu_data as $row) : 
+				foreach ($menu_data as $index => $row) : 
+				if ($index  > 10) {
+					break;
+				}
                 $data_menu = $row['data_menu']; 
                 $menu_image = $row['menu_image'];
                 $menu_name = $row['menu_name'];
+				$menu_url = $row['menu_url'];
 				
 				if (is_array($menu_image)) {
                     $menu_image_url = $menu_image['url']; // Assuming 'url' is the key
@@ -125,7 +130,7 @@ dataLayer.push({
 				?> 
 
 				<li class="<?php echo ($data_menu === $active_menu) ? 'active' : ''; ?>" data-menu="<?php echo esc_attr($data_menu); ?>">
-                    <a>
+                    <a href="<?php echo $menu_url;?>">
                         <img class="w-[24px] menu-icons" src="<?php echo esc_url($menu_image_url); ?>" alt="<?php echo esc_attr($menu_name); ?>">
                         <span class="menu-title"><?php echo esc_html($menu_name); ?></span>
                     </a>
@@ -138,180 +143,37 @@ dataLayer.push({
               </ul>
             </div>
             <div class="col-span-3 py-[12px]">
-              <div class="w-[100%] bg-[#231008] h-[100%] rounded-[10px] p-5">
-                  <div class="show-more-menu show-more" id="frontEndDev">
-						<ul class="mega-menu-center">
-							<?php if( have_rows('frontend_menu_second_level', 'option') ): ?>
-								<?php while( have_rows('frontend_menu_second_level', 'option') ): the_row(); ?>
-									<?php if( have_rows('frontend_menu', 'option') ): ?>
-										<?php while( have_rows('frontend_menu', 'option') ): the_row(); 
-											$menu_name = get_sub_field('frontend_sub_menu_name');
-											$menu_url = get_sub_field('url');
-										?>
-											<li>
-												<a href="<?php echo esc_url($menu_url); ?>">
-													<?php echo esc_html($menu_name); ?>
-													<span><img class="w-[20px]" src="<?php echo get_template_directory_uri(); ?>/images/right-arrow.png" /></span>
-												</a>
-											</li>
-										<?php endwhile; ?>
-									<?php endif; ?>
-								<?php endwhile; ?>
-							<?php endif; ?>
-						</ul>
-					</div>
-                  <div class="show-more-menu" id="backEndDev">
-                    <ul class="mega-menu-center">
-							<?php if( have_rows('backend_menu_second_level', 'option') ): ?>
-								<?php while( have_rows('backend_menu_second_level', 'option') ): the_row(); ?>
-									<?php if( have_rows('backend_menu', 'option') ): ?>
-										<?php while( have_rows('backend_menu', 'option') ): the_row(); 
-											$menu_name = get_sub_field('backend_sub_menu_name');
-											$menu_url = get_sub_field('url');
-										?>
-											<li>
-												<a href="<?php echo esc_url($menu_url); ?>">
-													<?php echo esc_html($menu_name); ?>
-													<span><img class="w-[20px]" src="<?php echo get_template_directory_uri(); ?>/images/right-arrow.png" /></span>
-												</a>
-											</li>
-										<?php endwhile; ?>
-									<?php endif; ?>
-								<?php endwhile; ?>
-							<?php endif; ?>
-					</ul>
-                  </div>
-                  <div class="show-more-menu" id="fullStackDev">
-                    <ul class="mega-menu-center">
-							<?php if( have_rows('full_stack_menu_second_level', 'option') ): ?>
-								<?php while( have_rows('full_stack_menu_second_level', 'option') ): the_row(); ?>
-									<?php if( have_rows('backend_menu', 'option') ): ?>
-										<?php while( have_rows('backend_menu', 'option') ): the_row(); 
-											$menu_name = get_sub_field('full_stack_sub_menu_name');
-											$menu_url = get_sub_field('url');
-										?>
-											<li>
-												<a href="<?php echo esc_url($menu_url); ?>">
-													<?php echo esc_html($menu_name); ?>
-													<span><img class="w-[20px]" src="<?php echo get_template_directory_uri(); ?>/images/right-arrow.png" /></span>
-												</a>
-											</li>
-										<?php endwhile; ?>
-									<?php endif; ?>
-								<?php endwhile; ?>
-							<?php endif; ?>
-					</ul>
-                  </div>
-				  <div class="show-more-menu" id="webDev">
-                    <ul class="mega-menu-center">
-							<?php if( have_rows('web_developer_menu_second_level', 'option') ): ?>
-								<?php while( have_rows('web_developer_menu_second_level', 'option') ): the_row(); ?>
-									<?php if( have_rows('web_developer_menu', 'option') ): ?>
-										<?php while( have_rows('web_developer_menu', 'option') ): the_row(); 
-											$menu_name = get_sub_field('web_developer_sub_menu_name');
-											$menu_url = get_sub_field('url');
-										?>
-											<li>
-												<a href="<?php echo esc_url($menu_url); ?>">
-													<?php echo esc_html($menu_name); ?>
-													<span><img class="w-[20px]" src="<?php echo get_template_directory_uri(); ?>/images/right-arrow.png" /></span>
-												</a>
-											</li>
-										<?php endwhile; ?>
-									<?php endif; ?>
-								<?php endwhile; ?>
-							<?php endif; ?>
-					</ul>
-                  </div>
-				  <div class="show-more-menu" id="cloudDev">
-                    <ul class="mega-menu-center">
-							<?php if( have_rows('cloud_developer_menu_second_level', 'option') ): ?>
-								<?php while( have_rows('cloud_developer_menu_second_level', 'option') ): the_row(); ?>
-									<?php if( have_rows('cloud_developer_menu', 'option') ): ?>
-										<?php while( have_rows('cloud_developer_menu', 'option') ): the_row(); 
-											$menu_name = get_sub_field('cloud_developer_sub_menu_name');
-											$menu_url = get_sub_field('url');
-										?>
-											<li>
-												<a href="<?php echo esc_url($menu_url); ?>">
-													<?php echo esc_html($menu_name); ?>
-													<span><img class="w-[20px]" src="<?php echo get_template_directory_uri(); ?>/images/right-arrow.png" /></span>
-												</a>
-											</li>
-										<?php endwhile; ?>
-									<?php endif; ?>
-								<?php endwhile; ?>
-							<?php endif; ?>
-					</ul>
-                  </div>
-				  
-                  <div class="show-more-menu" id="mobileDev">
-                    <ul class="mega-menu-center">
-							<?php if( have_rows('mobile_app_developer_menu_second_level', 'option') ): ?>
-								<?php while( have_rows('mobile_app_developer_menu_second_level', 'option') ): the_row(); ?>
-									<?php if( have_rows('mobile_app_developer_menu', 'option') ): ?>
-										<?php while( have_rows('mobile_app_developer_menu', 'option') ): the_row(); 
-											$menu_name = get_sub_field('mobile_app_developer_sub_menu_name');
-											$menu_url = get_sub_field('url');
-										?>
-											<li>
-												<a href="<?php echo esc_url($menu_url); ?>">
-													<?php echo esc_html($menu_name); ?>
-													<span><img class="w-[20px]" src="<?php echo get_template_directory_uri(); ?>/images/right-arrow.png" /></span>
-												</a>
-											</li>
-										<?php endwhile; ?>
-									<?php endif; ?>
-								<?php endwhile; ?>
-							<?php endif; ?>
-					</ul>
-                  </div>
-                  
-                  
-                  <div class="show-more-menu" id="specializedDev">
-                    <ul class="mega-menu-center">
-							<?php if( have_rows('software_developer_menu_second_level', 'option') ): ?>
-								<?php while( have_rows('software_developer_menu_second_level', 'option') ): the_row(); ?>
-									<?php if( have_rows('software_developer_menu', 'option') ): ?>
-										<?php while( have_rows('software_developer_menu', 'option') ): the_row(); 
-											$menu_name = get_sub_field('software_developer_sub_menu_name');
-											$menu_url = get_sub_field('url');
-										?>
-											<li>
-												<a href="<?php echo esc_url($menu_url); ?>">
-													<?php echo esc_html($menu_name); ?>
-													<span><img class="w-[20px]" src="<?php echo get_template_directory_uri(); ?>/images/right-arrow.png" /></span>
-												</a>
-											</li>
-										<?php endwhile; ?>
-									<?php endif; ?>
-								<?php endwhile; ?>
-							<?php endif; ?>
-					</ul>
-                  </div>
-				  
-				  <div class="show-more-menu" id="trendingDev">
-                    <ul class="mega-menu-center">
-							<?php if( have_rows('trending_developer_menu_second_level', 'option') ): ?>
-								<?php while( have_rows('trending_developer_menu_second_level', 'option') ): the_row(); ?>
-									<?php if( have_rows('trending_developer_menu', 'option') ): ?>
-										<?php while( have_rows('trending_developer_menu', 'option') ): the_row(); 
-											$menu_name = get_sub_field('trending_developer_sub_menu_name');
-											$menu_url = get_sub_field('url');
-										?>
-											<li>
-												<a href="<?php echo esc_url($menu_url); ?>">
-													<?php echo esc_html($menu_name); ?>
-													<span><img class="w-[20px]" src="<?php echo get_template_directory_uri(); ?>/images/right-arrow.png" /></span>
-												</a>
-											</li>
-										<?php endwhile; ?>
-									<?php endif; ?>
-								<?php endwhile; ?>
-							<?php endif; ?>
-					</ul>
-                  </div>
-              </div>
+			<ul class="mega-menu-left">
+			  <?php 
+				if ($menu_data) : 
+				foreach ($menu_data as $index => $row) : 
+					if ($index < 11) {
+						continue;  // Skip the first 10 items
+					}
+                $data_menu = $row['data_menu']; 
+                $menu_image = $row['menu_image'];
+                $menu_name = $row['menu_name'];
+				$menu_url = $row['menu_url'];
+				
+				if (is_array($menu_image)) {
+                    $menu_image_url = $menu_image['url']; // Assuming 'url' is the key
+                } else {
+                    $menu_image_url = esc_url($menu_image); // For image ID or URL
+                }
+				?> 
+
+				<li class="<?php echo ($data_menu === $active_menu) ? 'active' : ''; ?>" data-menu="<?php echo esc_attr($data_menu); ?>">
+                    <a href="<?php echo $menu_url;?>">
+                        <img class="w-[24px] menu-icons" src="<?php echo esc_url($menu_image_url); ?>" alt="<?php echo esc_attr($menu_name); ?>">
+                        <span class="menu-title"><?php echo esc_html($menu_name); ?></span>
+                    </a>
+                </li>
+				
+			 <?php endforeach; else : ?> 
+				<li>No menu items found.</li> 
+			<?php endif; ?> 	
+                
+              </ul>
             </div>
             <div class="col-span-3 p-4">
               <div class="max-w-md relative z-10 rounded-[12px] min-h-[250px] bg-white overflow-hidden shadow-lg mx-auto">

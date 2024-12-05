@@ -169,7 +169,7 @@
 	<?php get_template_part( 'template-parts/ai-vetted-profile' );?>
 	<?php get_template_part( 'template-parts/assemble-team' );?>
 	<?php get_template_part( 'template-parts/trustpilot-review' );?>
-	<?php get_template_part( 'template-parts/home-blog' );?>
+	<?php //get_template_part( 'template-parts/home-blog' );?>
 	<!-- FAQ Section  -->
 	<div class="w-full relative grid items-center z-10 py-16">
 	<div class="container mx-auto md:px-0 px-10 ">

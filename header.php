@@ -96,7 +96,7 @@ dataLayer.push({
         ?>
       </div>
       <div class="col-span-3 content-center text-start md:text-end">
-        <a href="/find-a-developer/" class="button mobile-m-0 inline-block button-small rounded-md px-[10px] md:px-[20px] py-[10px] border-little-orange border-2 text-[16px] text-white radial-gradient-login mr-0 lg:mr-[20px] hover:bg-dark-orange" target="">FIND A TECHNICIAN</a>
+        <!-- <a href="/find-a-developer/" class="button mobile-m-0 inline-block button-small rounded-md px-[10px] md:px-[20px] py-[10px] border-little-orange border-2 text-[16px] text-white radial-gradient-login mr-0 lg:mr-[20px] hover:bg-dark-orange" target="">FIND A TECHNICIAN</a> -->
         <a href="/contact-us/" class="button inline-block button-small rounded-md px-[10px] md:px-[20px] py-[10px] border-dark-orange border-2 bg-dark-orange text-white text-[16px] hover:bg-transparent hover:text-dark-orange " target="">CONTACT US</a>
       </div>
     </div> 
@@ -105,77 +105,97 @@ dataLayer.push({
       <div class="show-main-menu" id="hireDevId">
           <div class="grid grid-cols-1 md:grid-cols-9 h-[100%]">
             <div class="col-span-3">
-			<?php
-				$active_menu = 'frontEndDev';
-				$menu_data = get_field('hire_dev_menu', 'option');
-			?>
-              <ul class="mega-menu-left">
-			  <?php 
-			  	$counter = 0;
-				if ($menu_data) : 
-				foreach ($menu_data as $index => $row) : 
-				if ($index  > 10) {
-					break;
-				}
-                $data_menu = $row['data_menu']; 
-                $menu_image = $row['menu_image'];
-                $menu_name = $row['menu_name'];
-				$menu_url = $row['menu_url'];
-				
-				if (is_array($menu_image)) {
-                    $menu_image_url = $menu_image['url']; // Assuming 'url' is the key
-                } else {
-                    $menu_image_url = esc_url($menu_image); // For image ID or URL
-                }
-				?> 
+    <?php
+        $active_menu = 'frontEndDev';
+        $menu_data = get_field('hire_dev_menu', 'option');
+    ?>
+    <ul class="mega-menu-left">
+        <?php 
+            if ($menu_data) : 
+                foreach ($menu_data as $index => $row) : 
+                    if ($index >= 0 && $index < 9) { // First row: Items 1 to 9 (index 0 to 8)
+                        $data_menu = $row['data_menu']; 
+                        $menu_image = $row['menu_image'];
+                        $menu_name = $row['menu_name'];
+                        $menu_url = $row['menu_url'];
 
-				<li class="<?php echo ($data_menu === $active_menu) ? 'active' : ''; ?>" data-menu="<?php echo esc_attr($data_menu); ?>">
-                    <a href="<?php echo $menu_url;?>">
-                        <img class="w-[24px] menu-icons" src="<?php echo esc_url($menu_image_url); ?>" alt="<?php echo esc_attr($menu_name); ?>">
-                        <span class="menu-title"><?php echo esc_html($menu_name); ?></span>
-                    </a>
-                </li>
-				
-			 <?php endforeach; else : ?> 
-				<li>No menu items found.</li> 
-			<?php endif; ?> 	
-                
-              </ul>
-            </div>
-            <div class="col-span-3 py-[12px]">
-			<ul class="mega-menu-left">
-			  <?php 
-				if ($menu_data) : 
-				foreach ($menu_data as $index => $row) : 
-					if ($index < 11) {
-						continue;  // Skip the first 10 items
-					}
-                $data_menu = $row['data_menu']; 
-                $menu_image = $row['menu_image'];
-                $menu_name = $row['menu_name'];
-				$menu_url = $row['menu_url'];
-				
-				if (is_array($menu_image)) {
-                    $menu_image_url = $menu_image['url']; // Assuming 'url' is the key
-                } else {
-                    $menu_image_url = esc_url($menu_image); // For image ID or URL
-                }
-				?> 
+                        $menu_image_url = is_array($menu_image) ? $menu_image['url'] : esc_url($menu_image);
+        ?>
+            <li class="<?php echo ($data_menu === $active_menu) ? 'active' : ''; ?>" data-menu="<?php echo esc_attr($data_menu); ?>">
+                <a href="<?php echo $menu_url; ?>">
+                    <img class="w-[24px] menu-icons" src="<?php echo esc_url($menu_image_url); ?>" alt="<?php echo esc_attr($menu_name); ?>">
+                    <span class="menu-title"><?php echo esc_html($menu_name); ?></span>
+                </a>
+            </li>
+        <?php 
+                    }
+                endforeach; 
+            else : 
+        ?>
+            <li>No menu items found.</li>
+        <?php endif; ?>
+    </ul>
+</div>
 
-				<li class="<?php echo ($data_menu === $active_menu) ? 'active' : ''; ?>" data-menu="<?php echo esc_attr($data_menu); ?>">
-                    <a href="<?php echo $menu_url;?>">
-                        <img class="w-[24px] menu-icons" src="<?php echo esc_url($menu_image_url); ?>" alt="<?php echo esc_attr($menu_name); ?>">
-                        <span class="menu-title"><?php echo esc_html($menu_name); ?></span>
-                    </a>
-                </li>
-				
-			 <?php endforeach; else : ?> 
-				<li>No menu items found.</li> 
-			<?php endif; ?> 	
-                
-              </ul>
-            </div>
-            <div class="col-span-3 p-4">
+<div class="col-span-3 py-[12px]">
+    <ul class="mega-menu-left">
+        <?php 
+            if ($menu_data) : 
+                foreach ($menu_data as $index => $row) : 
+                    if ($index >= 9 && $index < 18) { // Second row: Items 10 to 18 (index 9 to 17)
+                        $data_menu = $row['data_menu']; 
+                        $menu_image = $row['menu_image'];
+                        $menu_name = $row['menu_name'];
+                        $menu_url = $row['menu_url'];
+
+                        $menu_image_url = is_array($menu_image) ? $menu_image['url'] : esc_url($menu_image);
+        ?>
+            <li class="<?php echo ($data_menu === $active_menu) ? 'active' : ''; ?>" data-menu="<?php echo esc_attr($data_menu); ?>">
+                <a href="<?php echo $menu_url; ?>">
+                    <img class="w-[24px] menu-icons" src="<?php echo esc_url($menu_image_url); ?>" alt="<?php echo esc_attr($menu_name); ?>">
+                    <span class="menu-title"><?php echo esc_html($menu_name); ?></span>
+                </a>
+            </li>
+        <?php 
+                    }
+                endforeach; 
+            else : 
+        ?>
+            <li>No menu items found.</li>
+        <?php endif; ?>
+    </ul>
+</div>
+
+<div class="col-span-3 py-[12px]">
+    <ul class="mega-menu-left">
+        <?php 
+            if ($menu_data) : 
+                foreach ($menu_data as $index => $row) : 
+                    if ($index >= 18) { // Third row: Items 19 and beyond (index 18 onwards)
+                        $data_menu = $row['data_menu']; 
+                        $menu_image = $row['menu_image'];
+                        $menu_name = $row['menu_name'];
+                        $menu_url = $row['menu_url'];
+
+                        $menu_image_url = is_array($menu_image) ? $menu_image['url'] : esc_url($menu_image);
+        ?>
+            <li class="<?php echo ($data_menu === $active_menu) ? 'active' : ''; ?>" data-menu="<?php echo esc_attr($data_menu); ?>">
+                <a href="<?php echo $menu_url; ?>">
+                    <img class="w-[24px] menu-icons" src="<?php echo esc_url($menu_image_url); ?>" alt="<?php echo esc_attr($menu_name); ?>">
+                    <span class="menu-title"><?php echo esc_html($menu_name); ?></span>
+                </a>
+            </li>
+        <?php 
+                    }
+                endforeach; 
+            else : 
+        ?>
+            <li>No menu items found.</li>
+        <?php endif; ?>
+    </ul>
+</div>
+
+            <!--<div class="col-span-3 p-4">
               <div class="max-w-md relative z-10 rounded-[12px] min-h-[250px] bg-white overflow-hidden shadow-lg mx-auto">
                 <div class="px-6 py-4">
                   <div class="block">
@@ -207,7 +227,7 @@ dataLayer.push({
               <p class="text-[18px] text-[#FF4E03] mt-8">Curious About Cost?</p>
               <p class="text-[12px] text-[#fff] mt-3">Find out the price of your next remote hire here.</p>
               <a href="/pricing/"> <button class="block py-2 w-[100%] mt-4 rounded-lg text-center px-8 bg-[#FF4E03] text-[16px] text-[#fff]">CLICK TO CALCULATE NOW</button> </a>
-            </div>
+            </div> -->
           </div>
       </div>
 
